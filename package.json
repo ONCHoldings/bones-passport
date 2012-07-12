@@ -4,15 +4,15 @@
   "description": "Integrate the passport authentication framework into Bones.",
   "version": "0.0.1",
   "engines": {
-    "node": "~0.4.12"
+    "node": "~0.6.11"
   },
   "dependencies": {
-    "express": "=2.4.4",
-    "passport": "0.1.3",
-    "passport-dummy": "0.0.1",
-    "passport-oauth": "0.1.1",
+    "express": "~2.5.8",
+    "passport": "0.1.11",
+    "passport-dummy": "https://github.com/EmbarkSystems/passport-dummy/tarball/master",
+    "passport-oauth": "0.1.9",
     "passport-local": "0.1.0",
-    "passport-twitter": "0.1.0"
+    "passport-twitter": "0.1.3"
   },
   "devDependencies": {}
 }
