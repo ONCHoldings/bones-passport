@@ -4,10 +4,11 @@ var passport = require('passport'),
 server = servers.Passport.extend({
     key: 'dummy',
     strategy: strategy,
-    verify: function(done) {
-        var user = {
-            id: 'dummy',
-        }
+    verify: function(done, user) {
+        if(!user)
+            user = {
+                id: 'dummy'
+            }
         return done(null, user);
     }
 });
