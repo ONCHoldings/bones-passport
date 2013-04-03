@@ -9,3 +9,13 @@ server = servers.Passport.extend({
         return done(null, user);
     }
 });
+
+server.augment({
+    initialize: function(parent, app) {
+        parent.call(this, app);
+        this.post('/auth/' + this.key, passport.authenticate(this.key, {
+            successRedirect: '/',
+            failureRedirect: '/error'
+        }));
+    }
+});

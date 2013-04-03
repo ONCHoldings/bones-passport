@@ -1,14 +1,13 @@
 var passport = require('passport'),
     util = require('util');
 
-// Passport session setup.
-passport.serializeUser(function(user, done) {
+function serializeUser(user, done) {
     done(null, user);
-});
+}
 
-passport.deserializeUser(function(obj, done) {
+function deserializeUser(obj, done) {
     done(null, new models.User(obj));
-});
+}
 
 server = Bones.Server.extend({
     options: {},
@@ -18,6 +17,10 @@ server = Bones.Server.extend({
         var options = app.config && app.config.passport && app.config.passport[this.key];
         this.options.sessionKey = 'auth:' + this.key;
         options && _.extend(this.options, options);
+
+        // Passport session setup.
+        passport.serializeUser(this.serializeUser || serializeUser);
+        passport.deserializeUser(this.deserializeUser || deserializeUser);
 
         // store the strategy instance in a separate variable, so we can access it easily.
         var strategy = new this.strategy(this.options, this.verify);
