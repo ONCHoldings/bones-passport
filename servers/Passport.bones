@@ -24,6 +24,7 @@ server = Bones.Server.extend({
 
         // store the strategy instance in a separate variable, so we can access it easily.
         var strategy = new this.strategy(this.options, this.verify);
+        strategy.name = this.key;
 
         // mount the passport strategy.
         passport.use(strategy);
