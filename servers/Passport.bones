@@ -27,7 +27,7 @@ server = Bones.Server.extend({
         strategy.name = this.key;
 
         // mount the passport strategy.
-        passport.use(strategy);
+        passport.use(this.key, strategy);
 
         // give the request access to the strategy instance
         // to allow re-use of the oauth instance to make requests.
