@@ -11,12 +11,9 @@ server = servers.Passport.extend({
 });
 
 server.augment({
-    initialize: function(parent, app) {
+    initialize: function(parent, app, options) {
         parent.call(this, app);
         console.log('mounting ' + this.key + ' authentication strategy');
-        this.post('/auth/' + this.key, passport.authenticate(this.key, {
-            successRedirect: '/',
-         //   failureRedirect: '/error'
-        }));
+        this.post('/auth/' + this.key, passport.authenticate(this.key, options));
     }
 });
